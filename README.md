@@ -1,3 +1,30 @@
+## Get up and running with agnostack_com
+
+install nvm: (https://github.com/nvm-sh/nvm#installing-and-updating)
+```shell
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+```
+
+use the correct version of node, once nvm is installed
+```shell
+nvm install && nvm use
+```
+
+install yarn (yarn is like npm)
+```shell
+npm install -g yarn
+```
+
+install dependencies
+```shell
+yarn install
+```
+
+run the app
+```shell
+yarn watch
+```
+
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <p align="center">
   <a href="https://www.gatsbyjs.org">
