@@ -27,7 +27,7 @@ run the app
 yarn watch
 ```
 
-### Below is the generic Gatsby readme and doesn't exactly pertain to this project.
+### ------------ Below is the generic Gatsby readme and doesn't exactly pertain to this project.
 
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <p align="center">
