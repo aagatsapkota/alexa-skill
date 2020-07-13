@@ -1,0 +1,72 @@
+[
+  {
+    "plan": "Starter",
+    "price": "5",
+    "agents": "2",
+    "information": [
+      { "feature": "Order Details" },
+      { "feature": "Order History" },
+      { "feature": "Customer Search" },
+      { "feature": "Pin Order" },
+      { "feature": "Order Filter" }
+    ]
+  },
+  {
+    "plan": "Professional",
+    "price": "19",
+    "agents": "5",
+    "information": [
+      { "feature": "Order Details" },
+      { "feature": "Order History" },
+      { "feature": "Customer Search" },
+      { "feature": "Pin Order" },
+      { "feature": "Order Filter" },
+      { "feature": "Order Search" },
+      { "feature": "Shipping Status" },
+      { "feature": "Payment Status" },
+      { "feature": "Order Status" }
+    ]
+  },
+  {
+    "plan": "Premium",
+    "price": "24",
+    "agents": "5",
+    "information": [
+      { "feature": "Order Details" },
+      { "feature": "Order History" },
+      { "feature": "Customer Search" },
+      { "feature": "Pin Order" },
+      { "feature": "Order Filter" },
+      { "feature": "Order Search" },
+      { "feature": "Shipping Status" },
+      { "feature": "Payment Status" },
+      { "feature": "Order Status" },
+      { "feature": "Order Refund" },
+      { "feature": "Item Refund*" }
+    ]
+  },
+  {
+    "plan": "Enterprise",
+    "price": "30",
+    "agents": "8",
+    "information": [
+      { "feature": "Order Details" },
+      { "feature": "Order History" },
+      { "feature": "Customer Search" },
+      { "feature": "Pin Order" },
+      { "feature": "Order Filter" },
+      { "feature": "Order Search" },
+      { "feature": "Shipping Status" },
+      { "feature": "Payment Status" },
+      { "feature": "Order Status" },
+      { "feature": "Order Refund" },
+      { "feature": "Item Refund*" },
+      { "feature": "Partial Refund*" },
+      { "feature": "Custom Refund*" },
+      { "feature": "Order Payment" },
+      { "feature": "Order Creation" },
+      { "feature": "Quick Re-Order" },
+      { "feature": "Catalog Search" }
+    ]
+  }
+]

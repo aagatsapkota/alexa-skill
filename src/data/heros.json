@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Zendesk...",
+    "subtitle": "meet Commerce.",
+    "text": "Introducing the world's first platform agnostic, omni-channel commerce solution built natively on Zendesk. We bring the next generation of customer support experiences to retailers large and small.",
+    "format": "medium"
+  },
+  {
+    "title": "Customer experience",
+    "subtitle": "without compromise.",
+    "text": "Truly amazing purchase experiences aren't just about buying great products. The world's leading brands know that customer experience runs from initial contact through to dealing with issues to deliver exceptional support.",
+    "format": "accent1"
+  },
+  {
+    "title": "Agent experience",
+    "subtitle": "without compromise.",
+    "text": "Customer support agents are often as frustrated as consumers, having to re-enter in data across multiple systems. We bring commerce data directly to their fingertips to better support your customers without playing \"swivel chair\".",
+    "format": "accent2"
+  },
+  {
+    "title": "Commerce",
+    "subtitle": "without compromise!",
+    "text": "Are you're ready to bring your commerce capabilities to the next level across all channels? Turn your customer support department from a cost center to a driver of profit and enabler of amazing customer experiences.",
+    "format": "highlight"
+  }
+]

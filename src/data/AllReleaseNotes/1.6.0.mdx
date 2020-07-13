@@ -1,0 +1,97 @@
+---
+version: 1.6.0
+date: 6/1/2020
+category: "Release Number"
+template: "release_notes"
+---
+
+<Tag size="large" isPill="true" hue="red">Announcements</Tag>
+
+<br/>
+<br/>
+
+## BETA support for AfterShip
+
+We're excited to announce our BETA launch for customers using <a href="https://www.aftership.com/" target="_blank">AfterShip</a>. This adds the ability to directly integrate real-time shipping status from your AfterShip account into your agnoStack plugin.
+
+<br/>
+
+To learn more about our our AfterShip BETA, please contact us at [support@agnostack.com](mailto:support@agnostack.com?subject=agnoStack%20AfterShip%20BETA).
+
+<br/>
+
+## Updated Zendesk Magento 1 Extension
+
+Zendesk has released an important update to their Magento 1 Extension that fixes errors related to their WebWidget as well as addresses a security vulnerability. Version 2.3.1 of the Extension has now been released and is available at <a href="https://github.com/zendesk/magento_extension" target="_blank">https://github.com/zendesk/magento_extension</a>.
+
+<br/>
+<br/>
+
+<Tag size="large" isPill="true" hue="kale">New Features</Tag>
+
+<br/>
+<br/>
+
+## Magento 2 Store Code
+
+We've added support for customers who are using Magento 2 and have multiple stores to be able to specify the specific Store Code that you want your agnoStack plugin to access. This functionality already existed for customers using Magento 1 and has now been extended to support Magento 2 as well.
+
+<br/>
+<br/>
+
+<div class="columns">
+  <div class="full">
+    <p>
+      <h2>Dynamic Order Refund Amount</h2>
+    </p>
+    <p>
+      We've now added the ability to be able to specify a custom percentage (or fixed custom amount) when issuing order refunds.<br/><br/>
+    </p>
+    <p>
+      If you're using our Enterprise tier, this new extended order refund functionality should be available today after refreshing your browser. If you're using a commerce platform where our Enterprise tier is not yet available, stay tuned for updates in coming months about extended availability.
+    </p>
+  </div>
+  <div class="third right">
+    <img
+      class="border"
+      width="100%"
+      src="/images/features-custom-refund.png"
+      data-canonical-src="/images/features-custom-refund.png"
+    />
+  </div>
+</div>
+
+## Subscription Self-Service
+
+In addition to the earlier functionality released for Subscription Management that allowed you to directly change the email address, billing contact name, as well as credit card on file for your agnoStack account, we've now updated the Manage Your Subscription screen to allow you to directly Cancel Your Subscription through self-service.
+
+
+<br/>
+<br/>
+
+<Tag size="large" isPill="true" hue="blue">Fixes/Enhancements</Tag>
+
+<br/>
+<br/>
+
+## BigCommerce Sort Order
+
+Several new BigCommerce customers noted that the default sort for orders was incorrectly showing in reverse chronological order; this has now been fixed to show orders from newest to oldest.
+
+<br/>
+
+## BigCommerce Error Handling
+
+We've updated our integration with BigCommerce to improve the error handling. If for any reason, you have not set your API permissions properly per our [setup instructions](/faqs/setup-onboarding/configuring-big-commerce), the application will now let you know that you have a `fail-permissions` error.
+
+<br/>
+
+## Order ID Field
+
+We have fixed an issue related to the Order ID field used for Pin Order functionality. When installing the application, if you had entered into the `Order ID Field` configuration a Field that had been automatically created by our application, it would inadvertently hide that field in the Ticket Details panel; this has now been resolved.
+
+<br/>
+
+## Loading Shield Autofocus
+
+In this release, we've fixed a bug introduced in the past release where we were unexpectedly removing focus from the ticket form while the plugin was loading. NOTE: this had already been published as a hotfix, but the official functionality is included in this release.
