@@ -10,6 +10,8 @@ use the correct version of node, once nvm is installed
 nvm install && nvm use
 ```
 
+Your terminal output should say 'Now using node v10.20.1 (npm v6.14.4)'.  And when you run `node -v` it should say you are running v10.20.1
+
 install yarn (yarn is like npm)
 ```shell
 npm install -g yarn
