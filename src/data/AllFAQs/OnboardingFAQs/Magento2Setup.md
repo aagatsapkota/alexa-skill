@@ -3,6 +3,7 @@ title: "Configuring Magento 2"
 category: "Setup & Onboarding"
 priority: 2
 template: "faqs"
+tags: "magento-2"
 ---
 
 <p>[Magento 2](https://www.adobe.com/commerce/magento.html) - as well as support for [Adobe Commerce Cloud](https://www.adobe.com/commerce/magento/enterprise.html) - is available as a Commerce Provider within the agnoStack plugin and supports using a built-in Shipping Provider, making use of the shipping configuration you've already set up in Magento. It currently supports our Starter and Professional subscription tiers, with upcoming support soon to be released for our Enterprise tier.</p>

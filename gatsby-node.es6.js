@@ -4,7 +4,7 @@ import { config } from './src/theme/config'
 import { getPaths } from './src/util/gatsby'
 
 const path = require('path')
-
+const allTags = [];
 export const createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
 
@@ -24,6 +24,7 @@ export const createPages = async ({ graphql, actions, reporter }) => {
               imagePath
               keywords
               description
+              tags
             }
             body
           }
@@ -43,6 +44,7 @@ export const createPages = async ({ graphql, actions, reporter }) => {
               category
               template
               priority
+              tags
             }
             html
           }
@@ -50,7 +52,7 @@ export const createPages = async ({ graphql, actions, reporter }) => {
       }
     }
   `)
-
+ 
   if (mdQuery.errors || mdxQuery.errors) {
     reporter.panicOnBuild('Error while running GraphQL markdown queries.')
     throw new Error(
@@ -117,13 +119,26 @@ export const createPages = async ({ graphql, actions, reporter }) => {
     }
   )
 
+  edges.forEach((tag) => {
+     if(tag.node.frontmatter.tags!=null && !allTags.includes(tag.node.frontmatter.tags )) {
+       allTags.push(tag.node.frontmatter.tags);
+    }
+  })
+ 
+  allTags.forEach((tag )=> {
+    createPage({
+      path: `/${tag}`,
+      component: path.resolve(`src/templates/${tag}.js`)
+    })
+  })
+
   Object.entries(paths).forEach(([template, categories]) => {
     if (template && template !== 'null') {
       const category = Object.keys(paths[template])[0]
       const node = categories[category][0]
       const { frontmatter } = node
       const templatePath = `/${dashcase(template)}`
-
+      
       createPage({
         path: templatePath,
         // TODO: investigate landing page template?
