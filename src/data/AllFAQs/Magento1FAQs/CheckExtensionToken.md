@@ -2,6 +2,7 @@
 title: "Check your M1 Extension Agent token"
 category: "Magento 1 Q&A"
 template: "faqs"
+tags: "magento1"
 ---
 
 To confirm your M1 Extension is using the correct Agent token:

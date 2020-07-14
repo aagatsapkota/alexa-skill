@@ -1,3 +1,34 @@
+## Get up and running with agnostack_com
+
+install nvm: (https://github.com/nvm-sh/nvm#installing-and-updating)
+```shell
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+```
+
+use the correct version of node, once nvm is installed
+```shell
+nvm install && nvm use
+```
+
+Your terminal output should say 'Now using node v10.20.1 (npm v6.14.4)'.  And when you run `node -v` it should say you are running v10.20.1
+
+install yarn (yarn is like npm)
+```shell
+npm install -g yarn
+```
+
+install dependencies
+```shell
+yarn install
+```
+
+run the app
+```shell
+yarn watch
+```
+
+### ------------ Below is the generic Gatsby readme and doesn't exactly pertain to this project.
+
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <p align="center">
   <a href="https://www.gatsbyjs.org">

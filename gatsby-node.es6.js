@@ -4,6 +4,7 @@ import { config } from './src/theme/config'
 import { getPaths } from './src/util/gatsby'
 
 const path = require('path')
+let allTags=[];
 
 export const createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
@@ -24,6 +25,7 @@ export const createPages = async ({ graphql, actions, reporter }) => {
               imagePath
               keywords
               description
+              tags
             }
             body
           }
@@ -43,6 +45,7 @@ export const createPages = async ({ graphql, actions, reporter }) => {
               category
               template
               priority
+              tags
             }
             html
           }
@@ -50,7 +53,7 @@ export const createPages = async ({ graphql, actions, reporter }) => {
       }
     }
   `)
-
+ 
   if (mdQuery.errors || mdxQuery.errors) {
     reporter.panicOnBuild('Error while running GraphQL markdown queries.')
     throw new Error(
@@ -83,6 +86,9 @@ export const createPages = async ({ graphql, actions, reporter }) => {
         frontmatter: { category, template, format },
       },
     }) => {
+      if(node.frontmatter.tags ) {
+        allTags.push(node.frontmatter.tags);
+     }
       const { path: templatePath } = paths[template][category].find(
         ({ id: nodeId }) => nodeId === id
       )
@@ -116,6 +122,15 @@ export const createPages = async ({ graphql, actions, reporter }) => {
       })
     }
   )
+ 
+  const uniqueTags = [...new Set(allTags)]
+
+  uniqueTags.forEach((tag )=> {
+    createPage({
+      path: `/${tag}`,
+      component: path.resolve(`src/templates/tagPage.js`)
+    })
+  })
 
   Object.entries(paths).forEach(([template, categories]) => {
     if (template && template !== 'null') {
@@ -123,7 +138,7 @@ export const createPages = async ({ graphql, actions, reporter }) => {
       const node = categories[category][0]
       const { frontmatter } = node
       const templatePath = `/${dashcase(template)}`
-
+      
       createPage({
         path: templatePath,
         // TODO: investigate landing page template?
