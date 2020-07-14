@@ -5,7 +5,6 @@ import { getPaths } from './src/util/gatsby'
 
 const path = require('path')
 let allTags=[];
-let uniqueTags;
 
 export const createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
@@ -124,7 +123,7 @@ export const createPages = async ({ graphql, actions, reporter }) => {
     }
   )
  
-  uniqueTags = [...new Set(allTags)]
+  const uniqueTags = [...new Set(allTags)]
 
   uniqueTags.forEach((tag )=> {
     createPage({
