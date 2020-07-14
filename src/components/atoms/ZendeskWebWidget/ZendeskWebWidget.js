@@ -201,7 +201,6 @@ const ZendeskWebWidget = ({ theme }) => {
 
   useEffect(() => {
     handleSetSnippetKey(defaultSnippet)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [defaultSnippet])
 
   const showPopupWindow = (subdomain && windowIsOpen) || false

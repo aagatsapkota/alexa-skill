@@ -19,7 +19,6 @@ export const query = graphql`
 `
 
 const page = ({ theme, pageContext }) => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [{ width }] = useDimensions(window)
   const {
     node: {

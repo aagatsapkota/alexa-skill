@@ -6,5 +6,4 @@
 **/.git/**
 **/public/**
 **/js-utils/**
-**/src/**
 !.eslintrc.js

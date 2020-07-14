@@ -50,7 +50,6 @@ const HeroSlider = ({ duration = 6000, heros }) => {
         },
       })
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activePanel])
 
   useInterval(() => {

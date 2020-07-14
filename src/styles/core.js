@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
 import { Anchor as _Anchor } from '@zendeskgarden/react-buttons'
-import { convertElement } from '../../src/js-utils'
+import { convertElement } from '../js-utils'
 
 const handleMode = ({ mode, theme, format = 'default' }) => {
   switch (mode) {

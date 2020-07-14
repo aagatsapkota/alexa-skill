@@ -77,7 +77,6 @@ const Navigation = ({ children, theme }) => {
       }
     }
     return () => {}
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [navRef])
 
   return (

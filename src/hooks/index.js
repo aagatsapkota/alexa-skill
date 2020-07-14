@@ -12,9 +12,11 @@ export const useCodeSnippet = ({ children, ...props }) => {
 
   const getClipped = async () => {
     let clipped
+    // eslint-disable-next-line no-undef
     if (navigator && navigator.clipboard) {
       try {
         window.focus()
+        // eslint-disable-next-line no-undef
         clipped = await navigator.clipboard.readText()
       } catch (error) {
         console.error(error)
@@ -130,7 +132,6 @@ export const useDimensions = (container = window) => {
 
     container.addEventListener('resize', handleResize)
     return () => container.removeEventListener('resize', handleResize)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return [windowDimensions, resizeDimensions]

@@ -30,7 +30,6 @@ const BookMeetingPage = ({ data }) => {
       scheduleModalVisible: true,
       scheduleModalTitle: 'Book A Meeting',
     })
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

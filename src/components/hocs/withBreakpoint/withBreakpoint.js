@@ -10,7 +10,6 @@ const withBreakpoint = (
   FallbackComponent = null,
   container = window
 ) => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [{ width }] = useDimensions(container)
   const ResponsiveHOC = ({
     theme,

@@ -11,8 +11,10 @@ const PopupWindow = ({
 
   const getClipped = async () => {
     let clipped
+    // eslint-disable-next-line no-undef
     if (navigator && navigator.clipboard) {
       try {
+        // eslint-disable-next-line no-undef
         clipped = await navigator.clipboard.readText()
       } catch (info) {
         console.warn('Ignoring getClipped error', info)

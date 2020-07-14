@@ -1,7 +1,7 @@
-import React from "react"
+import React from 'react'
 
 export default function tagPage() {
   return (
-      <div>Template for Tag Pages</div>
+    <div>Template for Tag Pages</div>
   )
 }
