@@ -4,7 +4,8 @@ import { config } from './src/theme/config'
 import { getPaths } from './src/util/gatsby'
 
 const path = require('path')
-const allTags = [];
+let allTags=[];
+let uniqueTags;
 export const createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
 
@@ -85,6 +86,9 @@ export const createPages = async ({ graphql, actions, reporter }) => {
         frontmatter: { category, template, format },
       },
     }) => {
+      if(node.frontmatter.tags ) {
+        allTags.push(node.frontmatter.tags);
+     }
       const { path: templatePath } = paths[template][category].find(
         ({ id: nodeId }) => nodeId === id
       )
@@ -118,17 +122,13 @@ export const createPages = async ({ graphql, actions, reporter }) => {
       })
     }
   )
-
-  edges.forEach((tag) => {
-     if(tag.node.frontmatter.tags!=null && !allTags.includes(tag.node.frontmatter.tags )) {
-       allTags.push(tag.node.frontmatter.tags);
-    }
-  })
  
-  allTags.forEach((tag )=> {
+  uniqueTags = [...new Set(allTags)]
+  
+  uniqueTags.forEach((tag )=> {
     createPage({
       path: `/${tag}`,
-      component: path.resolve(`src/templates/${tag}.js`)
+      component: path.resolve(`src/templates/tagPage.js`)
     })
   })
 
