@@ -30,13 +30,13 @@ query tagPageTemplateQuery {
 `
 
 export default function tagPage({
-  data,
+  data, pageContext
 }) {
   const edges = [...data.allMarkdownRemark.edges, ...data.allMdx.edges]
   const allLinks = []
   let i = 0
   for (i; i < edges.length; i += 1) {
-    if (edges[i].node.frontmatter.tags) {
+    if (edges[i].node.frontmatter.tags === pageContext.tag) {
       allLinks.push(edges[i])
     }
   }
@@ -48,7 +48,7 @@ export default function tagPage({
       <br />
       <br />
       {allLinks.map((link) => (
-        <a href="/faqs/setup-onboarding/configure-manage-your-account">
+        <a href={link.node.frontmatter.path}>
           {link.node.frontmatter.title}
           <br />
         </a>
