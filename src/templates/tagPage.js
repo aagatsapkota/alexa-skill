@@ -14,20 +14,31 @@ query tagPageTemplateQuery {
       }
     }
   }
+  allMdx {
+    edges {
+      node {
+        id
+        frontmatter {
+          title
+          tags
+        }
+        body
+      }
+    }
+  }
 }
 `
 
 export default function tagPage({
   data,
 }) {
-  const { allMarkdownRemark } = data
-  const { edges } = allMarkdownRemark
   return (
     <div>
       <br />
       <br />
       <br />
-      <h1>{JSON.stringify(edges)}</h1>
+      <br />
+      <h1>{JSON.stringify(data.allMdx.edges)}</h1>
     </div>
   )
 }
