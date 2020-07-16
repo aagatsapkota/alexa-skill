@@ -2,24 +2,32 @@ import React from 'react'
 import { graphql } from 'gatsby'
 
 export const mdQuery = graphql`
-{
-  markdownRemark {
-    frontmatter {
-      tags
+query tagPageTemplateQuery {
+  allMarkdownRemark {
+    edges {
+      node {
+        id
+        frontmatter {
+          title
+          tags
+        }
+      }
     }
   }
 }
 `
+
 export default function tagPage({
-  data, // this prop will be injected by the GraphQL above
+  data,
 }) {
-  const { markdownRemark } = data // data.markdownRemark holds your post data
-  const { frontmatter } = markdownRemark
+  const { allMarkdownRemark } = data
+  const { edges } = allMarkdownRemark
   return (
     <div>
-      <h1>{JSON.stringify(data.markdownRemark)}</h1>
       <br />
-      {frontmatter.tags}
+      <br />
+      <br />
+      <h1>{JSON.stringify(edges)}</h1>
     </div>
   )
 }
