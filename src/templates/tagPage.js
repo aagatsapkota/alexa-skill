@@ -1,6 +1,5 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-// import { getPaths } from '.../src/util/gatsby'
 
 export const mdQuery = graphql`
 query tagPageTemplateQuery {
@@ -33,18 +32,14 @@ query tagPageTemplateQuery {
 export default function tagPage({
   data,
 }) {
-  // const paths = getPaths(edges)
-
-  const mdEdges = data.allMarkdownRemark.edges
-  const mdxEdges = data.allMdx.edges
-  const edges = [...mdEdges, ...mdxEdges]
-  // const allLinks = []
-
-  // mdEdges.forEach((node) => {
-  //   if (node.frontmatter.tags) {
-  //     allLinks.push(node.frontmatter.tags)
-  //   }
-  // })
+  const edges = [...data.allMarkdownRemark.edges, ...data.allMdx.edges]
+  const allLinks = []
+  let i = 0
+  for (i; i < edges.length; i += 1) {
+    if (edges[i].node.frontmatter.tags) {
+      allLinks.push(edges[i])
+    }
+  }
 
   return (
     <div>
@@ -52,7 +47,13 @@ export default function tagPage({
       <br />
       <br />
       <br />
-      {JSON.stringify(edges)}
+      {allLinks.map((link) => (
+        <a href="/faqs/setup-onboarding/configure-manage-your-account">
+          {link.node.frontmatter.title}
+          <br />
+        </a>
+      ))}
+      <br />
       <br />
       <br />
     </div>
