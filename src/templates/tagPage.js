@@ -1,5 +1,6 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
+import { dashcase } from '../js-utils'
 import { getPaths } from '../util/gatsby'
 
 export const mdQuery = graphql`
@@ -26,6 +27,7 @@ query tagPageTemplateQuery {
           tags
           template
           category
+          version
         }
         body
       }
@@ -58,7 +60,13 @@ export default function tagPage({
       <br />
       <br />
       <br />
-      {allLinks.map((link) => (
+      {allLinks.map((link) => {
+        return (
+          const path = link.node.frontmatter.path || [dashcase(link.node.frontmatter.template),
+            dashcase(link.node.frontmatter.category),
+            dashcase(link.node.frontmatter.title || link.node.frontmatter.version )
+            ].filter((pathElement) => pathElement && pathElement !== '').join('/')
+            
         <Link to="PATH TO GO HERE">
           {link.node.frontmatter.title}      
           {JSON.stringify(paths)}
@@ -66,7 +74,7 @@ export default function tagPage({
           <br />
           <br />
         </Link>
-      ))}
+      )})}
       <br />
       <br />
       <br />
