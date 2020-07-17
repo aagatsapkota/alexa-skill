@@ -4,7 +4,7 @@ category: "Setup & Onboarding"
 priority: 3
 template: "faqs"
 tags: "magento1"
-path: "https://agnostack.com/faqs/setup-onboarding/configuring-magento-1"
+path: "/faqs/setup-onboarding/configuring-magento-1"
 ---
 
 <p>[Magento 1](https://magento.com/blog/magento-news/magento-community-edition-1.9.1-now-available-download) is available as a Commerce Provider within the agnoStack plugin with basic support for our Free as well as Starter subscription tiers.</p>

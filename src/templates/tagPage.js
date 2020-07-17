@@ -1,5 +1,5 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 
 export const mdQuery = graphql`
 query tagPageTemplateQuery {
@@ -10,6 +10,7 @@ query tagPageTemplateQuery {
         frontmatter {
           title
           tags
+          path
         }
       }
     }
@@ -21,6 +22,7 @@ query tagPageTemplateQuery {
         frontmatter {
           title
           tags
+          path
         }
         body
       }
@@ -48,10 +50,10 @@ export default function tagPage({
       <br />
       <br />
       {allLinks.map((link) => (
-        <a href={link.node.frontmatter.path}>
+        <Link key={link.node.id} to={link.node.frontmatter.path}>
           {link.node.frontmatter.title}
           <br />
-        </a>
+        </Link>
       ))}
       <br />
       <br />

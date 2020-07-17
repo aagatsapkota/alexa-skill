@@ -3,6 +3,7 @@ title: "Check your Extension version and Firewall settings"
 category: "Magento 1 Q&A"
 template: "faqs"
 tags: "magento1"
+path: "/faqs/magento-1-q-a/check-your-extension-version-and-firewall-settings"
 ---
 
 Older versions of the M1 Extension are no longer supported and are likely to cause "`fail-order`" errors within the new app. Please check that your extension version matches the latest version available (https://github.com/zendesk/magento_extension). If not please update by following the instructions in [Magento: Installing the Zendesk extension for Magento.](https://support.zendesk.com/hc/en-us/articles/203660046-Magento-Integration-Installing-the-Zendesk-extension-for-Magento)
