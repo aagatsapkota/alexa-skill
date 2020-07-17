@@ -51,7 +51,7 @@ export default function tagPage({
 
   edges.forEach((edge) => {
     if (edge.node.frontmatter.tags) {
-      edge.node.frontmatter.tags.split(' ').forEach((tag) => {
+      edge.node.frontmatter.tags.split(', ').forEach((tag) => {
         if (tag === pageContext.tag) {
           allLinks.push(edge.node)
         }
