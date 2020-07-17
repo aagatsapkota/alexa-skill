@@ -90,6 +90,7 @@ export const createPages = async ({ graphql, actions, reporter }) => {
         node.frontmatter.tags.split(", ").forEach(tag =>
         allTags.push(tag))
      }
+     
       const { path: templatePath } = paths[template][category].find(
         ({ id: nodeId }) => nodeId === id
       )

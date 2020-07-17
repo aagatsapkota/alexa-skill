@@ -59,7 +59,7 @@ export const getPaths = (edges) => {
         || [dashcase(template), dashcase(category), dashcase(title || version)]
           .filter((pathElement) => pathElement && pathElement !== '')
           .join('/')
-
+          
       const {
         [template]: previousTemplatePages = {},
         ...previousOtherPages
@@ -100,4 +100,3 @@ export const getPaths = (edges) => {
     }
   }, {})
 }
-
