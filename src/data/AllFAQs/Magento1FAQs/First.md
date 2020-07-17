@@ -4,7 +4,6 @@ category: "Magento 1 Q&A"
 priority: -1
 template: "faqs"
 tags: "magento1"
-path: "/faqs/magento-1-q-a/troubleshoot-your-magento-1-setup"
 ---
 
 The agnoStack plugin continues to make use of Zendesk's existing [Magento 1(M1) Extension (https://github.com/zendesk/magento_extension)](https://github.com/zendesk/magento_extension) to provide the connection between our app for Magento M1 and your Magento instance.

@@ -87,7 +87,8 @@ export const createPages = async ({ graphql, actions, reporter }) => {
       },
     }) => {
       if(node.frontmatter.tags ) {
-        allTags.push(node.frontmatter.tags);
+        node.frontmatter.tags.split(" ").forEach(tag =>
+        allTags.push(tag))
      }
       const { path: templatePath } = paths[template][category].find(
         ({ id: nodeId }) => nodeId === id
@@ -124,7 +125,7 @@ export const createPages = async ({ graphql, actions, reporter }) => {
   )
  
   const uniqueTags = [...new Set(allTags)]
-
+  
   uniqueTags.forEach((tag )=> {
     createPage({
       path: `/${tag}`,

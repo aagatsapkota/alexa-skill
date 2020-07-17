@@ -3,7 +3,6 @@ title: "Check your Zendesk app API token"
 category: "Magento 1 Q&A"
 template: "faqs"
 tags: "magento1"
-path: "/faqs/magento-1-q-a/check-your-zendesk-app-api-token"
 ---
 
 In order to set up the flow of information between Zendesk and Magento, authentication tokens must be provided to both the agnoStack plugin as well as the M1 Extension. While there is validation in there, a common occurrence is mixing up which tokens are provided.
