@@ -1,7 +1,6 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
 import { dashcase } from '../js-utils'
-import { getPaths } from '../util/gatsby'
 
 export const mdQuery = graphql`
 query tagPageTemplateQuery {
@@ -51,33 +50,22 @@ export default function tagPage({
       })
     }
   })
-  const paths = getPaths(allLinks)
 
-  // {paths[link.node.frontmatter.templates][link.node.frontmatter.category].path}
   return (
     <div>
-      <br />
-      <br />
-      <br />
-      <br />
       {allLinks.map((link) => {
-        return (
-          const path = link.node.frontmatter.path || [dashcase(link.node.frontmatter.template),
-            dashcase(link.node.frontmatter.category),
-            dashcase(link.node.frontmatter.title || link.node.frontmatter.version )
-            ].filter((pathElement) => pathElement && pathElement !== '').join('/')
-            
-        <Link to="PATH TO GO HERE">
-          {link.node.frontmatter.title}      
-          {JSON.stringify(paths)}
-          <br />
-          <br />
-          <br />
-        </Link>
-      )})}
-      <br />
-      <br />
-      <br />
+        const path = link.node.frontmatter.path || [dashcase(link.node.frontmatter.template),
+          dashcase(link.node.frontmatter.category),
+          dashcase(link.node.frontmatter.title || link.node.frontmatter.version )
+          ].filter((pathElement) => pathElement && pathElement !== '').join('/')
+        return (  
+          <p>
+            <Link to={`/${path}`}>
+              {link.node.frontmatter.title}      
+            </Link>
+          </p>
+        )
+      })}
     </div>
   )
 }
