@@ -2,6 +2,7 @@ import React from 'react'
 import { graphql, Link } from 'gatsby'
 import { dashcase } from '../js-utils'
 import TemplatedPage from '../components/molecules/TemplatedPage'
+import { SEO } from '../components/atoms'
 
 export const mdQuery = graphql`
 query tagPageTemplateQuery {
@@ -42,15 +43,13 @@ export default function tagPage({
   const edges = [...data.allMarkdownRemark.edges, ...data.allMdx.edges]
   const allLinks = []
 
-  const test =  { node: {
+  const test = { node: {
     frontmatter: {
       title: ''
     },
     body: '',
     html: ''
-  }}
-
-  console.log("TESTING,", test)
+  } }
 
   edges.forEach((edge) => {
     if (edge.node.frontmatter.tags) {
@@ -64,26 +63,30 @@ export default function tagPage({
 
   return (
     <div>
+      <SEO
+        title={`${pageContext.tag}`}
+        type="links"
+      />
       <TemplatedPage
-      data = {test}
-      headline={pageContext.tag}
-      tagline = 'Links'
-      format = 'medium'
+        data={test}
+        headline={pageContext.tag}
+        tagline="Links"
+        format="medium"
       >
         {allLinks.map((link) => {
-        const path = link.node.frontmatter.path || [dashcase(link.node.frontmatter.template),
-          dashcase(link.node.frontmatter.category),
-          dashcase(link.node.frontmatter.title || link.node.frontmatter.version)
-        ].filter((pathElement) => pathElement && pathElement !== '').join('/')
-        return (
-          <p>
-            <br />
-            <Link to={`/${path}`}>
-              {link.node.frontmatter.title}
-            </Link>
-          </p>
-        )
-      })}
+          const path = link.node.frontmatter.path || [dashcase(link.node.frontmatter.template),
+            dashcase(link.node.frontmatter.category),
+            dashcase(link.node.frontmatter.title || link.node.frontmatter.version)
+          ].filter((pathElement) => pathElement && pathElement !== '').join('/')
+          return (
+            <p>
+              <br />
+              <Link to={`/${path}`}>
+                {link.node.frontmatter.title}
+              </Link>
+            </p>
+          )
+        })}
       </TemplatedPage>
     </div>
   )
