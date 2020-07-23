@@ -1,5 +1,5 @@
 ---
-title: "Configuring Zendesk Group"
+title: "Configuring Zendesk Groups"
 category: "Setup & Onboarding"
 template: "faqs"
 tags: "zendesk group"
@@ -36,6 +36,10 @@ Administrators can create groups, agents cannot.
 
 <br />
 Administrators can view and manage all groups by selecting Groups on the People page.
+<br />
+
+<br />
+You can also watch this [short video to learn how to create a group.](https://fast.wistia.net/embed/iframe/1i7g26zf9t?popover=true)
 <br />
 
 <br />
