@@ -120,6 +120,11 @@ All of your agents will automatically be assigned to the first group you've crea
 <br />
 
 6. Close **Edit Groups.**
+<br />
+
+<br />
+**ENABLING GROUPS ON THE AGNOSTACK PLUGIN**
+<br />
 
 
 
