@@ -75,15 +75,26 @@ export default function tagPage({
         format="medium"
       >
         {allLinks.map((link) => {
-          const path = link.node.frontmatter.path || [dashcase(link.node.frontmatter.template),
-            dashcase(link.node.frontmatter.category),
-            dashcase(link.node.frontmatter.title || link.node.frontmatter.version)
+          const {
+            node: {
+              frontmatter: {
+                title,
+                path,
+                template,
+                version,
+                category
+              },
+            },
+          } = link
+          const linkPath = path || [dashcase(template),
+            dashcase(category),
+            dashcase(title || version)
           ].filter((pathElement) => pathElement && pathElement !== '').join('/')
           return (
             <p>
               <br />
-              <Link to={`/${path}`}>
-                {link.node.frontmatter.title}
+              <Link to={`/${linkPath}`}>
+                {title}
               </Link>
             </p>
           )

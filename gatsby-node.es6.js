@@ -130,7 +130,7 @@ export const createPages = async ({ graphql, actions, reporter }) => {
   uniqueTags.forEach((tag )=> {
     createPage({
       path: `/${tag}`,
-      component: path.resolve(`src/templates/tagPage.js`),
+      component: path.resolve('src/templates/tagPage.js'),
       context: {
         tag,
       }
