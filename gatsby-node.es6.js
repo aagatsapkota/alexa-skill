@@ -87,8 +87,8 @@ export const createPages = async ({ graphql, actions, reporter }) => {
       },
     }) => {
       if(node.frontmatter.tags ) {
-        node.frontmatter.tags.split(", ").forEach(tag =>
-        allTags.push(tag))
+        node.frontmatter.tags.split(', ').forEach(tag =>
+        allTags.push(tag.replace(/ /,'')))
      }
      
       const { path: templatePath } = paths[template][category].find(

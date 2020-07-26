@@ -5,41 +5,42 @@ import TemplatedPage from '../components/molecules/TemplatedPage'
 import { SEO } from '../components/atoms'
 
 export const mdQuery = graphql`
-query tagPageTemplateQuery {
-  allMarkdownRemark {
-    edges {
-      node {
-        id
-        frontmatter {
-          title
-          tags
-          template
-          category
+  query tagPageTemplateQuery {
+    allMarkdownRemark {
+      edges {
+        node {
+          id
+          frontmatter {
+            title
+            tags
+            template
+            category
+          }
+        }
+      }
+    }
+    allMdx {
+      edges {
+        node {
+          id
+          frontmatter {
+            title
+            tags
+            template
+            category
+            version
+          }
+          body
         }
       }
     }
   }
-  allMdx {
-    edges {
-      node {
-        id
-        frontmatter {
-          title
-          tags
-          template
-          category
-          version
-        }
-        body
-      }
-    }
-  }
-}
 `
 
 export default function tagPage({
   data, pageContext
 }) {
+  const { tag } = pageContext || {}
   const edges = [...data.allMarkdownRemark.edges, ...data.allMdx.edges]
   const allLinks = []
 
@@ -53,8 +54,8 @@ export default function tagPage({
 
   edges.forEach((edge) => {
     if (edge.node.frontmatter.tags) {
-      edge.node.frontmatter.tags.split(', ').forEach((tag) => {
-        if (tag === pageContext.tag) {
+      edge.node.frontmatter.tags.split(', ').forEach((link) => {
+        if (link.replace(/ /, '') === tag) {
           allLinks.push(edge)
         }
       })
@@ -64,13 +65,13 @@ export default function tagPage({
   return (
     <div>
       <SEO
-        title={`${pageContext.tag}`}
+        title={`${tag}`}
         type="links"
       />
       <TemplatedPage
         data={test}
-        headline={pageContext.tag}
-        tagline="Links"
+        headline={tag}
+        tagline="Resources"
         format="medium"
       >
         {allLinks.map((link) => {

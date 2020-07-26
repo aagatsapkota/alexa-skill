@@ -92,7 +92,6 @@
     "react-stickynode": "2.1.1",
     "regenerator-runtime": "0.13.5",
     "semver": "7.3.2",
-    "sharp": "^0.25.4",
     "styled-components": "4.4.1",
     "typeface-gothic-a1": "0.0.61",
     "typeface-nunito-sans": "0.0.72"
