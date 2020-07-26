@@ -44,13 +44,15 @@ export default function tagPage({
   const edges = [...data.allMarkdownRemark.edges, ...data.allMdx.edges]
   const allLinks = []
 
-  const test = { node: {
-    frontmatter: {
-      title: ''
-    },
-    body: '',
-    html: ''
-  } }
+  const test = { node:
+    {
+      frontmatter: {
+        title: ''
+      },
+      body: '',
+      html: ''
+    }
+  }
 
   edges.forEach((edge) => {
     if (edge.node.frontmatter.tags) {
