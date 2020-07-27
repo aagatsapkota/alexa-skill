@@ -2,7 +2,8 @@
 title: "Configuring Zendesk Groups"
 category: "Setup & Onboarding"
 template: "faqs"
-tags: "zendesk group"
+priority: 99
+tags: "zendesk groups"
 ---
 
 Groups are used to create collections of agents based on criteria those agents have in common. All agents must belong to at least one group, and they can belong to multiple groups.
@@ -39,7 +40,7 @@ Administrators can view and manage all groups by selecting Groups on the People 
 <br />
 
 <br />
-You can also watch this [short video to learn how to create a group.](https://fast.wistia.net/embed/iframe/1i7g26zf9t?popover=true)
+You can also watch this <a href="https://fast.wistia.net/embed/iframe/1i7g26zf9t?popover=true">short video to learn how to create a group.</a>
 <br />
 
 <br />
@@ -47,7 +48,7 @@ You can also watch this [short video to learn how to create a group.](https://fa
 <br />
 
 <br />
-After you create an agent you can add them to either pre-existing groups or assign them to new groups. For information on how to create a new agent, see [Adding end-users, agents, and administrators](https://support.zendesk.com/hc/en-us/articles/203661986-Adding-end-users-agents-and-administrators#topic_h43_2k2_yg).
+After you create an agent you can add them to either pre-existing groups or assign them to new groups. For information on how to create a new agent, see <a href="https://support.zendesk.com/hc/en-us/articles/203661986-Adding-end-users-agents-and-administrators#topic_h43_2k2_yg">Adding end-users, agents, and administrators.</a>
 <br />
 
 <br />
@@ -61,7 +62,7 @@ Agents are added or removed from groups via the groups editor, accessed from the
 <br />
 
 1. On an agent's profile page, click the **Groups** field.
-1. Select the group you want to add the agent to. A default group will automatically be assigned. See [Changing the default group](https://support.zendesk.com/hc/en-us/articles/203661966-Creating-managing-and-using-groups#topic_mq1_h13_dt) for information on how to change an agent's default group.
+1. Select the group you want to add the agent to. A default group will automatically be assigned. See <a href="https://support.zendesk.com/hc/en-us/articles/203661966-Creating-managing-and-using-groups#topic_mq1_h13_dt">Changing the default group </a> for information on how to change an agent's default group.
 1. Click **Close**.
 
 <br />
