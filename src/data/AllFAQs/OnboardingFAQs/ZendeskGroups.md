@@ -90,6 +90,7 @@ Agents are added or removed from groups via the groups editor, accessed from the
   <br />
   Once you've enabled restrictions for a specific Group(s)/Role(s) for the plugin, please be sure to log in as a user with that specific group access and ensure the plugin is available in the Apps sidebar (as well as login with an account that is not part of the restricted group and ensure the app is not showing up).
   <br />
+  <br />
   If you run into any trouble or need additional assistance, please contact us any time at <a href="mailto:support@agnostack.com">support@agnostack.com</a>.
   </div>
   <div class="third right">
