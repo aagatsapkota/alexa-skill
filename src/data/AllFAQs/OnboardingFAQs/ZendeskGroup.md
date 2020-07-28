@@ -23,7 +23,7 @@ How you set up your groups depends on how you want to define your workflow and o
 
 **To create a group:**
 
-1. Click the _**Admin**_ icon (<img src="/images/zendesk-group-admin_icon.png" data-canonical-src="/images/zendesk-group-admin_icon.png" />) in the sidebar, then select _**People**_.
+1. Click the _**Admin**_ icon (<img src="/images/zendesk-settings-icon.png" data-canonical-src="/images/zendesk-settings-icon.png" />) in the sidebar, then select _**People**_.
 1. Click _**Add group_.
 1. Enter a group name (ie. `agnoStack` or `Commerce`).
 1. Select the agents you want to add to the group.
@@ -81,7 +81,7 @@ Agents are added or removed from groups via the groups editor, accessed from the
 
   <b>To configure enabled group:</b>
   <ol>
-    <li>Click the _**Admin**_ icon (<img src="/images/zendesk-group-admin_icon.png" data-canonical-src="/images/zendesk-group-admin_icon.png" />) in the sidebar, then select _**Apps**_ > _**Manage**_.</li>
+    <li>Click the _**Admin**_ icon (<img src="/images/zendesk-settings-icon.png" data-canonical-src="/images/zendesk-settings-icon.png" />) in the sidebar, then select _**Apps**_ > _**Manage**_.</li>
     <li>Click on the agnoStack plugin to go to the built-in configuration page.</li>
     <li>Enable the checkbox next to _**Enable group restrictions?**_.</li>
     <li>Select the group that you configured above from the list of available groups.</li>
