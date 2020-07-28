@@ -57,7 +57,7 @@ export default function tagPage({
   edges.forEach((edge) => {
     if (edge.node.frontmatter.tags) {
       edge.node.frontmatter.tags.split(', ').forEach((link) => {
-        if (link.replace(/ /, '-') === tag) {
+        if (link === tag) {
           allLinks.push(edge)
         }
       })
@@ -72,7 +72,7 @@ export default function tagPage({
       />
       <TemplatedPage
         data={test}
-        headline={tag.replace(/-/, ' ')}
+        headline={tag.split(' ').map((word) => word[0].toUpperCase() + word.substr(1)).join(' ')}
         tagline="Resources"
         format="medium"
       >

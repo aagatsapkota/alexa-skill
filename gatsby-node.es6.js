@@ -88,7 +88,7 @@ export const createPages = async ({ graphql, actions, reporter }) => {
     }) => {
       if(node.frontmatter.tags ) {
         node.frontmatter.tags.split(', ').forEach(tag =>
-        allTags.push(tag.replace(/ /,'-')))
+        allTags.push(tag))
      }
      
       const { path: templatePath } = paths[template][category].find(
@@ -129,7 +129,7 @@ export const createPages = async ({ graphql, actions, reporter }) => {
 
   uniqueTags.forEach((tag )=> {
     createPage({
-      path: `/${tag}`,
+      path: `/${tag.replace(/ /,'-')}`,
       component: path.resolve('src/templates/tagPage.js'),
       context: {
         tag,
