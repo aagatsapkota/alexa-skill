@@ -128,6 +128,7 @@ export const createPages = async ({ graphql, actions, reporter }) => {
   const uniqueTags = [...new Set(allTags)]
 
   uniqueTags.forEach((tag )=> {
+    console.log(tag)
     createPage({
       path: `/${tag.replace(/ /,'-')}`,
       component: path.resolve('src/templates/tagPage.js'),
