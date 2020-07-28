@@ -40,7 +40,7 @@ Administrators can view and manage all groups by selecting Groups on the People 
 <br />
 
 <br />
-You can also watch this <a href="https://fast.wistia.net/embed/iframe/1i7g26zf9t?popover=true">short video to learn how to create a group.</a>
+You can also watch this <a href="https://fast.wistia.net/embed/iframe/1i7g26zf9t?popover=true" target="_blank">short video to learn how to create a group.</a>
 <br />
 
 <br />
@@ -48,7 +48,7 @@ You can also watch this <a href="https://fast.wistia.net/embed/iframe/1i7g26zf9t
 <br />
 
 <br />
-After you create an agent you can add them to either pre-existing groups or assign them to new groups. For information on how to create a new agent, see <a href="https://support.zendesk.com/hc/en-us/articles/203661986-Adding-end-users-agents-and-administrators#topic_h43_2k2_yg">Adding end-users, agents, and administrators.</a>
+After you create an agent you can add them to either pre-existing groups or assign them to new groups. For information on how to create a new agent, see <a href="https://support.zendesk.com/hc/en-us/articles/203661986-Adding-end-users-agents-and-administrators#topic_h43_2k2_yg" target="_blank">Adding end-users, agents, and administrators.</a>
 <br />
 
 <br />
@@ -62,7 +62,7 @@ Agents are added or removed from groups via the groups editor, accessed from the
 <br />
 
 1. On an agent's profile page, click the **Groups** field.
-1. Select the group you want to add the agent to. A default group will automatically be assigned. See <a href="https://support.zendesk.com/hc/en-us/articles/203661966-Creating-managing-and-using-groups#topic_mq1_h13_dt">Changing the default group </a> for information on how to change an agent's default group.
+1. Select the group you want to add the agent to. A default group will automatically be assigned. See <a href="https://support.zendesk.com/hc/en-us/articles/203661966-Creating-managing-and-using-groups#topic_mq1_h13_dt" target="_blank">Changing the default group </a> for information on how to change an agent's default group.
 1. Click **Close**.
 
 <br />
