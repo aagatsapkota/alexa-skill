@@ -1,5 +1,6 @@
 export * from './constants'
 export * from './crypto'
+export * from './currency'
 export * from './display'
 export * from './geography'
 export * from './locations'

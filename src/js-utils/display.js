@@ -1,6 +1,6 @@
-import currency from 'currency.js'
-import getSymbolFromCurrency from 'currency-map-symbol'
 import moment from 'moment-timezone'
+import { zdColorWhite } from '@zendeskgarden/css-variables'
+
 const semver = require('semver')
 const equals = require('fast-deep-equal')
 
@@ -79,6 +79,16 @@ const stringStartsWith = (values, comparison) => {
 }
 
 // EXPORTED FUNCTIONS
+
+export const isWhite = color => {
+  return (
+    color === 'white' ||
+    color === '#fff' ||
+    color === '#ffffff' ||
+    color === 'rgb(255, 255, 255)' ||
+    color === zdColorWhite
+  )
+}
 
 export const formatTimelineEventDate = date => {
   return `${moment(date).format('ll')} ${moment(date).format('LT')}`;
@@ -285,7 +295,7 @@ export const escapeSpecialChars = str => {
   });
 }
 
-export const ensureNumeric = (string) => Number(ensureString(string).replace(/[^0-9]/gi, ''))
+export const ensureNumeric = (string) => Number(ensureString(string).replace(/[^0-9.]/gi, ''))
 
 export const ensureArray = (array = []) => {
   return !array ? [] : Array.isArray(array) ? array : [array]
@@ -297,6 +307,25 @@ export const ensureObject = (object) => {
 
 export const ensureString = (string) => {
   return string ? `${string}` : ''
+}
+
+export const splitString = (splitting, index = splitting.length) => {
+  const string = ensureString(splitting)
+  return [string.slice(0, index), string.slice(index)]
+}
+
+export const capitalize = (string) => {
+  const parts = splitString(string, 1)
+  return `${uppercase(parts[0])}${parts[1]}`
+}
+
+export const uppercase = string => {
+  return ensureString(string).toUpperCase();
+}
+
+export const isTrue = (value) => {
+  const string = ensureString(value)
+  return !['','false'].includes(string)
 }
 
 export const isType = (value, type) => {
@@ -384,8 +413,8 @@ export const lowercase = (string) => {
 }
 
 export const mergeArraysByKey = (ary1, ary2, key) => {
-  return ary1.map(item1 => {
-    const matchingItem = ary2.find(item2 => {
+  return ensureArray(ary1).map(item1 => {
+    const matchingItem = ensureArray(ary2).find(item2 => {
       return item2[key] === item1[key] && item2;
     });
     return {
@@ -494,20 +523,6 @@ export const toRegexArray = (csv) => {
     .map(value => new RegExp(`^${prepareRegex(value)}$`))
 }
 
-// eslint-disable-next-line default-param-last
-export const formatPrice = (price = 0, currencyCode = 'USD', currentSymbol) => {
-  const amount = price / 100;
-  const symbol = currentSymbol || getSymbolFromCurrency(currencyCode) || '$';
-  return {
-    amount: currency(amount).intValue,
-    currency: currencyCode.toUpperCase(),
-    formatted: `${currency(amount, {
-      symbol,
-      formatWithSymbol: true,
-    }).format()}`,
-  }
-};
-
 export const querystringToObject = queryString => {
   const hashes = queryString.split('&');
   return hashes.reduce((params, hash) => {
@@ -550,6 +565,7 @@ export const safeParse = (object, trim) => {
     if (trim) {
       object = safeTrim(object)
     }
+
     if (object.startsWith('{') || object.startsWith('[')) {
       object = JSON.parse(object)
     }
@@ -605,9 +621,6 @@ export const traverse = (selector, obj = self, separator = '.') => {
   return properties.reduce((prev, curr) => prev && prev[curr], obj);
 }
 
-export const uppercase = string => {
-  return !string ? '' : string.toUpperCase();
-}
 
 export const compareVersion = (version1, version2) =>
   version1 === version2 ? 0 : semver.gt(version1, version2) ? -1 : 1
@@ -669,6 +682,12 @@ export const scrollTo = hash => {
 }
 
 export const formatNumber = (number, locale = 'en') => Number(number).toLocaleString(locale)
+
+export const formatDate = (value) => {
+  return value
+    ? moment(value).format('lll')
+    : null
+}
 
 export const formatTimestamps = ({ created_at = moment(), updated_at = moment() } = {}) => ({
   created_at: moment(created_at).format('YYYY-MM-DD HH:mm:ss'),
