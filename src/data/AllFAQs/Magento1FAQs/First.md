@@ -3,14 +3,14 @@ title: "Troubleshoot your Magento 1 setup"
 category: "Magento 1 Q&A"
 priority: -1
 template: "faqs"
-tags: "magento 1"
+tags: magento 1,fail-orders,fail-order,fail-order-m1
 ---
 
 The agnoStack plugin continues to make use of Zendesk's existing [Magento 1(M1) Extension (https://github.com/zendesk/magento_extension)](https://github.com/zendesk/magento_extension) to provide the connection between our app for Magento M1 and your Magento instance.
 
 <br/>
 
-If you see an error within the new agnoStack plugin containing a Reference ID and an Error Type of "`fail-order`" or "`fail-orders`", this is usually related to issues with the M1 Extension.
+If you see an error within the new agnoStack plugin containing a Reference ID and an Error Type of "`fail-order-m1`", "`fail-order`" or "`fail-orders`", this is usually related to issues with the M1 Extension.
 
 <br/>
 
@@ -42,8 +42,13 @@ The plugin will make requests similar to the following:
 <span>
 Any requests coming from **_https://<< YOUR SUBDOMAIN >>.zendesk.com/proxy/apps/secure_**
 and going to your Magento server at 
-**_<< YOUR STORE URL >>/index.php/zendesk/api/*_** must be able to come through without restriction or redirect.
+**_<< YOUR STORE URL >>/index.php/zendesk/api/*_** must be able to come through without restriction (firewall or otherwise) and without any redirects.
 </span>
+
+<br/>
+<br/>
+
+You can find additional details around how to fix related errors at: [Check your Extension version and Firewall settings](/faqs/magento-1-q-a/check-your-extension-version-and-firewall-settings).
 
 <br/>
 <br/>
