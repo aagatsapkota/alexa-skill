@@ -34,6 +34,7 @@
     "@mdx-js/react": "1.6.5",
     "@types/mdx-js__react": "1.5.0",
     "@types/react": "16.9.35",
+    "@zendeskgarden/css-variables": "6.4.5",
     "@zendeskgarden/container-accordion": "0.5.3",
     "@zendeskgarden/react-avatars": "8.4.1",
     "@zendeskgarden/react-buttons": "8.4.1",

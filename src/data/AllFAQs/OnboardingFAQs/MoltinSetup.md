@@ -3,7 +3,7 @@ title: "Configuring Moltin"
 category: "Setup & Onboarding"
 priority: 4
 template: "faqs"
-tags: "moltin"
+tags: "Moltin, ElasticPath"
 ---
 
 <p>[Moltin](https://www.moltin.com/) - now part of [ElasticPath](https://www.elasticpath.com/) - is available as a Commerce Provider within the agnoStack plugin and supports using external Payment Providers. It currently supports our Starter and Professional subscription tiers, with upcoming support soon to be released for our Enterprise tier.</p>

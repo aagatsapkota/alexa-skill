@@ -1,0 +1,133 @@
+---
+version: 2.1.0
+date: 7/20/2020
+category: "Release Number"
+template: "release_notes"
+tags: "Magento, Magento 1, Magento 2, BigCommerce, Moltin, ElasticPath"
+---
+
+<Well isFloating isRecessed>
+  <center>
+    📣 Additional performance improvements for BigCommerce and Magento 2! 📣 
+  </center>
+</Well>
+
+<br/>
+<br/>
+
+<Tag size="large" isPill="true" hue="red">Announcements</Tag>
+
+<br/>
+<br/>
+
+<div class="columns">
+  <div class="full">
+    <h2>Introducing our new <i>Premium</i>&nbsp;&nbsp;Tier!</h2>
+    <p>
+      We're incredible excited to introducing a brand new Premium Tier (now available for <b><i>FREE BETA</i></b> on <b><i>BigCommerce</i></b>, <b><i>Magento 2</i></b> and <b><i>ElasticPath/Moltin</i></b>) including Full Order as well as Item level full and quantity bound refunds.
+    </p>
+    <br/>
+    <p>
+      For brands who aren't yet ready for the full Enterprise tier, today we are adding a new option available to all current platforms except Magento 1.
+    </p>
+    <br/>
+    <p>
+      To sign up for the BETA of our new Premium tier, please contact us at <a href="mailto:info@agnostack.com?subject=agnoStack%Premium%20BETA">info@agnostack.com</a>. Preliminary pricing and feature details are available at: <a href="/pricing">https://agnostack.com/pricing</a>.
+    </p>
+  </div>
+  <div class="third right">
+    <img
+      class="border"
+      width="100%"
+      src="/images/refunds-item-screenshot.png"
+      data-canonical-src="/images/refunds-item-screenshot.png"
+    />
+  </div>
+</div>
+
+
+<Tag size="large" isPill="true" hue="kale">New Features</Tag>
+
+<br/>
+<br/>
+
+## Item, Partial and Custom Refunds
+
+<div class="columns">
+  <div class="third left">
+    <img
+      class="border"
+      width="100%"
+      src="/images/refunds-custom-screenshot.png"
+      data-canonical-src="/images/refunds-custom-screenshot.png"
+    />
+  </div>
+  <div class="full">
+    <p>
+      We've added significant new functionality including support for various additional types of refunds!
+    </p>
+    <br/>
+    <p>
+      This is being rolled out as additional functionality to our current Enterprise tier to now include Order, Item, Partial and Custom refunds at no additional cost as well as our new Premium tier mentioned above.
+    </p>
+    <br/>
+    <p>
+      In addition, we've enhanced our Order Detail page to show partial and fully refunded items in addition to the existing refund journal.
+    </p>
+  </div>
+</div>
+
+<br/>
+<br/>
+
+## Order-Level Currency
+
+We continue to enhance our support for globalization/localization and in this release we've now enhanced our Order History and Order Details screen to both bring through proper order and item level currency information directly from your Commerce Provider (whenever available).
+
+<br/>
+
+This also includes the ability to support commerce sites that may support multiple currencies to show the individual order with the specific currency used when placing the order.
+
+<br/>
+<br/>
+
+<Tag size="large" isPill="true" hue="blue">Fixes/Enhancements</Tag>
+
+<br/>
+<br/>
+
+## BigCommcerce Permissions Checkings
+
+As we've had more BigCommerce customers registering daily, we've enhanced our application to check that proper permissions have been enabled for your API. If you have incorrect permissions configured or have not properly set up an API in your BigCommerce store dashboard, you will now receive a _`fail-permissions`_ or a _`fail-unauthorized`_ error accordingly.
+
+<br/>
+
+<center>
+  <img
+    class="border"
+    width="500"
+    src="/images/bigcommerce-configuration-scopes-screenshot.png"
+    data-canonical-src="/images/bigcommerce-configuration-scopes-screenshot.png"
+  />
+</center>
+
+<br/>
+<br/>
+
+## Magento 1 Extension (v2.4 support)
+
+Zendesk has released a new, updated version of their Magento 1 Extension that enhances security and stability. It is highly recommended that you download and install the new version 2.4 of the Extension from the repository at: <a href="https://github.com/zendesk/magento_extension/releases" target="_blank">https://github.com/zendesk/magento_extension/releases</a>.
+
+<br/>
+<br/>
+
+## Magento 2 Native support for Authorize.net
+
+We've improved our integration with Authorize.net for customers running Magento 2. You no longer need to enter your API credentials for Authorize.net within the agnoStack plugin! The new version of the application directly leverages the configuration you've already set up within your Magento instance to ease the onboarding process and further improve security.
+
+<br/>
+<br/>
+
+## Duplicate Order/Quick Re-Order
+
+The Quick Re-Order functionality in our Enterprise tier has been fixed to ensure if you are duplicating an existing order and any items in the previous order are no longer available/in-stock that the remaining items are still added to your agent's cart.

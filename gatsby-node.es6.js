@@ -1,10 +1,10 @@
-import { random, dashcase, ensureArray } from './src/js-utils'
+import { random, dashcase, ensureArray, ensureString } from './src/js-utils'
 
 import { config } from './src/theme/config'
 import { getPaths } from './src/util/gatsby'
 
 const path = require('path')
-let allTags=[];
+let allTags = []
 
 export const createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
@@ -78,19 +78,24 @@ export const createPages = async ({ graphql, actions, reporter }) => {
 
   const paths = getPaths(edges)
 
-  edges.forEach(
-    ({
+  edges.forEach(({
       node,
       node: {
         id,
-        frontmatter: { category, template, format },
+        frontmatter,
+        frontmatter: {
+          category,
+          template,
+          format,
+          tags,
+        },
       },
     }) => {
-      if(node.frontmatter.tags ) {
-        node.frontmatter.tags.split(', ').forEach(tag =>
-        allTags.push(tag))
-     }
-     
+      allTags = [
+        ...allTags,
+        ...ensureString(tags).split(', ')
+      ]
+  
       const { path: templatePath } = paths[template][category].find(
         ({ id: nodeId }) => nodeId === id
       )
@@ -99,7 +104,6 @@ export const createPages = async ({ graphql, actions, reporter }) => {
         (themeFormat) => !['light', 'default'].includes(themeFormat)
       )
       const defaultFormat = formats[random(formats.length, 0)]
-      const { frontmatter } = node
       const parentPath = `/${dashcase(template)}`
 
       createPage({
@@ -129,8 +133,8 @@ export const createPages = async ({ graphql, actions, reporter }) => {
 
   uniqueTags.forEach((tag )=> {
     createPage({
-      path: `/${tag.replace(/ /,'-')}`,
-      component: path.resolve('src/templates/tagPage.js'),
+      path: `/${dashcase(tag)}`,
+      component: path.resolve('src/templates/tag.js'),
       context: {
         tag,
       }

@@ -3,7 +3,7 @@ title: "Troubleshoot your Magento 1 setup"
 category: "Magento 1 Q&A"
 priority: -1
 template: "faqs"
-tags: magento 1,fail-orders,fail-order,fail-order-m1
+tags: "Magento 1, fail-orders, fail-order, fail-order-m1"
 ---
 
 The agnoStack plugin continues to make use of Zendesk's existing [Magento 1(M1) Extension (https://github.com/zendesk/magento_extension)](https://github.com/zendesk/magento_extension) to provide the connection between our app for Magento M1 and your Magento instance.
