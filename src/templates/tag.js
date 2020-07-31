@@ -2,7 +2,11 @@ import React from 'react'
 import { graphql, Link } from 'gatsby'
 import { Tag } from '@zendeskgarden/react-tags'
 
-import { dashcase, ensureString } from '../js-utils'
+import { dashcase,
+  ensureString,
+  compareString,
+  compareVersion
+} from '../js-utils'
 import { SEO } from '../components/atoms'
 
 import TemplatedPage from '../components/molecules/TemplatedPage'
@@ -113,7 +117,15 @@ const tag = ({
         {/* TODO: create function to change snakecase to word case */}
         {/* TODO: add styled component for formatting Tag spacing */}
         {/* TODO: create a function to loop through a series of hues to ensure these are different */}
-        <Tag isPill size="large" hue="red">{linkGroup}</Tag>
+        {/* style={"text-transform: capitalize;"} */}
+        {console.log('Links', links.sort((first, second) => {
+          if (ensureString(first.title)) {
+            return compareString(first.title, second.title)
+          }
+          return compareVersion(first.title, second.title)
+        }))}
+        {/* Indentation ^^ */}
+        <Tag isPill size="large" hue="red">{linkGroup.replace(/_/, ' ')}</Tag>
       </div>
       <ul>
         {links.map(({ path, title }, linkIndex) => (
