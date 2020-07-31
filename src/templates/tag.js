@@ -53,7 +53,7 @@ const tag = ({
 }) => {
   const { tag: activeTag } = pageContext || {}
   const edges = [...mdEdges, ...mdxEdges]
-  const linkGroups = edges.reduce((previousLinkGroups, edge) => {
+  let linkGroups = edges.reduce((previousLinkGroups, edge) => {
     const {
       node: {
         frontmatter: {
@@ -95,6 +95,17 @@ const tag = ({
   }, {})
 
   // TODO: handle sorting of linkGroups by name
+  const sortedArray = Object.entries(linkGroups).sort()
+  linkGroups = {}
+  sortedArray.forEach((element) => {
+    linkGroups = {
+      ...linkGroups,
+      [element[0]]: [
+        ...[...element[1]]
+      ]
+    }
+  })
+
   const children = Object.entries(linkGroups).map(([linkGroup, links = []], groupIndex) => (
     // TODO: add styled LinkGroup component for formatting group spacing
     <div key={`group-${groupIndex}`}>
