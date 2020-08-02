@@ -2,14 +2,17 @@ import React from 'react'
 import { graphql, Link } from 'gatsby'
 import { Tag } from '@zendeskgarden/react-tags'
 
+import styled from 'styled-components'
 import { dashcase,
   ensureString,
-  compareString,
-  compareVersion
 } from '../js-utils'
 import { SEO } from '../components/atoms'
 
 import TemplatedPage from '../components/molecules/TemplatedPage'
+
+const ATag = styled.div`
+  text-transform: capitalize;
+`
 
 export const mdQuery = graphql`
   query tagPageTemplateQuery {
@@ -99,13 +102,15 @@ const tag = ({
   }, {})
 
   // TODO: handle sorting of linkGroups by name
+  // The chunck below is converting linkGroups into an Array, sorting it according to the template
+  // and the links, and converting it back into objects
   const sortedArray = Object.entries(linkGroups).sort()
   linkGroups = {}
   sortedArray.forEach((element) => {
     linkGroups = {
       ...linkGroups,
       [element[0]]: [
-        ...[...element[1]]
+        ...[...element[1].sort((a, b) => (a.title.toUpperCase() > b.title.toUpperCase() ? 1 : -1))]
       ]
     }
   })
@@ -118,18 +123,13 @@ const tag = ({
         {/* TODO: add styled component for formatting Tag spacing */}
         {/* TODO: create a function to loop through a series of hues to ensure these are different */}
         {/* style={"text-transform: capitalize;"} */}
-        {console.log('Links', links.sort((first, second) => {
-          if (ensureString(first.title)) {
-            return compareString(first.title, second.title)
-          }
-          return compareVersion(first.title, second.title)
-        }))}
-        {/* Indentation ^^ */}
-        <Tag isPill size="large" hue="red">{linkGroup.replace(/_/, ' ')}</Tag>
+        <ATag>
+          <Tag isPill size="large" hue="red">{linkGroup.replace(/_/, ' ')}</Tag>
+        </ATag>
       </div>
       <ul>
         {links.map(({ path, title }, linkIndex) => (
-          // TODO: handle sorting of links by title (version or text compare)
+          // TODO: handle sorting of links by title (version or text compare), this one is already done above
           // TODO: add styled component for formatting each Link/p spacing
           <p key={`link-${groupIndex}-${linkIndex}`}>
             <Link to={`/${path}`}>
