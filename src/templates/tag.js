@@ -12,7 +12,27 @@ import TemplatedPage from '../components/molecules/TemplatedPage'
 
 const ATag = styled.div`
   text-transform: capitalize;
+  margin-top: 2em;
+  margin-bottom: 0.5em;
 `
+
+const AList = styled.a`
+  padding: 5px;
+  display: block;
+`
+
+const hues = ['orange', 'black', 'purple', 'yellow', 'blue', 'green', 'red']
+let huesIndex = -1
+
+const setHuesIndex = () => {
+  huesIndex = -1
+}
+
+const getHues = () => {
+  huesIndex += 1
+  setTimeout(setHuesIndex, 10)
+  return hues[huesIndex]
+}
 
 export const mdQuery = graphql`
   query tagPageTemplateQuery {
@@ -117,28 +137,27 @@ const tag = ({
 
   const children = Object.entries(linkGroups).map(([linkGroup, links = []], groupIndex) => (
     // TODO: add styled LinkGroup component for formatting group spacing
-    <div key={`group-${groupIndex}`}>
-      <div>
+    <ATag key={`group-${groupIndex}`}>
+      <ATag>
         {/* TODO: create function to change snakecase to word case */}
         {/* TODO: add styled component for formatting Tag spacing */}
         {/* TODO: create a function to loop through a series of hues to ensure these are different */}
-        {/* style={"text-transform: capitalize;"} */}
-        <ATag>
-          <Tag isPill size="large" hue="red">{linkGroup.replace(/_/, ' ')}</Tag>
-        </ATag>
-      </div>
+        <Tag isPill size="large" hue={getHues()}>{linkGroup.replace(/_/, ' ')}</Tag>
+      </ATag>
       <ul>
         {links.map(({ path, title }, linkIndex) => (
           // TODO: handle sorting of links by title (version or text compare), this one is already done above
           // TODO: add styled component for formatting each Link/p spacing
           <p key={`link-${groupIndex}-${linkIndex}`}>
-            <Link to={`/${path}`}>
-              {title}
-            </Link>
+            <AList>
+              <Link to={`/${path}`}>
+                {title}
+              </Link>
+            </AList>
           </p>
         ))}
       </ul>
-    </div>
+    </ATag>
   ))
 
   return (
