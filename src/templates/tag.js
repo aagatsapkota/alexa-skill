@@ -21,7 +21,7 @@ const AList = styled.a`
   display: block;
 `
 
-const hues = ['orange', 'black', 'purple', 'yellow', 'blue', 'green', 'red']
+const hues = ['red', 'black', 'purple', 'yellow', 'blue', 'green', 'orange']
 let huesIndex = -1
 
 const setHuesIndex = () => {
