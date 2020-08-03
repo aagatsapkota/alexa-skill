@@ -21,17 +21,11 @@ const AList = styled.a`
   display: block;
 `
 
-const hues = ['red', 'black', 'purple', 'yellow', 'blue', 'green', 'orange']
-let huesIndex = -1
+let hues = []
+const setHues = () => { hues = ['orange', 'green', 'purple', 'yellow', 'blue', 'black', 'red'] }
 
-const setHuesIndex = () => {
-  huesIndex = -1
-}
-
-const getHues = () => {
-  huesIndex += 1
-  setTimeout(setHuesIndex, 10)
-  return hues[huesIndex]
+const resetHues = () => {
+  setTimeout(setHues(), 10)
 }
 
 export const mdQuery = graphql`
@@ -135,6 +129,8 @@ const tag = ({
     }
   })
 
+  resetHues()
+
   const children = Object.entries(linkGroups).map(([linkGroup, links = []], groupIndex) => (
     // TODO: add styled LinkGroup component for formatting group spacing
     <ATag key={`group-${groupIndex}`}>
@@ -142,7 +138,7 @@ const tag = ({
         {/* TODO: create function to change snakecase to word case */}
         {/* TODO: add styled component for formatting Tag spacing */}
         {/* TODO: create a function to loop through a series of hues to ensure these are different */}
-        <Tag isPill size="large" hue={getHues()}>{linkGroup.replace(/_/, ' ')}</Tag>
+        <Tag isPill size="large" hue={hues.pop()}>{linkGroup.replace(/_/, ' ')}</Tag>
       </ATag>
       <ul>
         {links.map(({ path, title }, linkIndex) => (
