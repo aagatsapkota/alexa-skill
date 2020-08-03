@@ -25,13 +25,6 @@ const AList = styled.p`
   display: block;
 `
 
-let hues = []
-const setHues = () => { hues = ['orange', 'green', 'purple', 'yellow', 'blue', 'black', 'red'] }
-
-const resetHues = () => {
-  setTimeout(setHues(), 10)
-}
-
 export const mdQuery = graphql`
   query tagPageTemplateQuery {
     allMarkdownRemark {
@@ -78,6 +71,7 @@ const tag = ({
 }) => {
   const { tag: activeTag } = pageContext || {}
   const edges = [...mdEdges, ...mdxEdges]
+  const hues = ['orange', 'green', 'purple', 'yellow', 'blue', 'black', 'red']
   let linkGroups = edges.reduce((previousLinkGroups, edge) => {
     const {
       node: {
@@ -119,8 +113,6 @@ const tag = ({
       }
   }, {})
 
-  // The chunck below is converting linkGroups into an Array, sorting it according to the template
-  // and the links, and converting it back into objects
   const sortedArray = Object.entries(linkGroups).sort()
   linkGroups = sortedArray.reduce((previousLinkGroups, element) => (
     {
@@ -137,12 +129,9 @@ const tag = ({
     }
   ), {})
 
-  resetHues()
-
   const children = Object.entries(linkGroups).map(([linkGroup, links = []], groupIndex) => (
     <ATag key={`group-${groupIndex}`}>
       <ATag>
-        {/* TODO: create a function to loop through a series of hues to ensure these are different */}
         <Tag isPill size="large" hue={hues.pop()}>{linkGroup.replace(/_/, ' ')}</Tag>
       </ATag>
       <ul>
