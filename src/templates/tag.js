@@ -5,10 +5,14 @@ import { Tag } from '@zendeskgarden/react-tags'
 import styled from 'styled-components'
 import { dashcase,
   ensureString,
+  compareString,
+  compareVersion
 } from '../js-utils'
 import { SEO } from '../components/atoms'
 
 import TemplatedPage from '../components/molecules/TemplatedPage'
+
+const semver = require('semver')
 
 const ATag = styled.div`
   text-transform: capitalize;
@@ -16,7 +20,7 @@ const ATag = styled.div`
   margin-bottom: 0.5em;
 `
 
-const AList = styled.a`
+const AList = styled.p`
   padding: 5px;
   display: block;
 `
@@ -119,15 +123,20 @@ const tag = ({
   // The chunck below is converting linkGroups into an Array, sorting it according to the template
   // and the links, and converting it back into objects
   const sortedArray = Object.entries(linkGroups).sort()
-  linkGroups = {}
-  sortedArray.forEach((element) => {
-    linkGroups = {
-      ...linkGroups,
+  linkGroups = sortedArray.reduce((previousLinkGroups, element) => {
+    return {
+      ...previousLinkGroups,
       [element[0]]: [
-        ...[...element[1].sort((a, b) => (a.title.toUpperCase() > b.title.toUpperCase() ? 1 : -1))]
+        ...[...element[1].sort((a, b) => {
+          if (semver.valid(a.title) && semver.valid(b.title)) {
+            return compareVersion(a.title, b.title)
+          }
+          return compareString(a.title, b.title)
+        })
+        ]
       ]
     }
-  })
+  }, {})
 
   resetHues()
 
@@ -144,13 +153,11 @@ const tag = ({
         {links.map(({ path, title }, linkIndex) => (
           // TODO: handle sorting of links by title (version or text compare), this one is already done above
           // TODO: add styled component for formatting each Link/p spacing
-          <p key={`link-${groupIndex}-${linkIndex}`}>
-            <AList>
-              <Link to={`/${path}`}>
-                {title}
-              </Link>
-            </AList>
-          </p>
+          <AList key={`link-${groupIndex}-${linkIndex}`}>
+            <Link to={`/${path}`}>
+              {title}
+            </Link>
+          </AList>
         ))}
       </ul>
     </ATag>
