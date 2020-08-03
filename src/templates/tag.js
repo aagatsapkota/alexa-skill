@@ -119,12 +119,11 @@ const tag = ({
       }
   }, {})
 
-  // TODO: handle sorting of linkGroups by name
   // The chunck below is converting linkGroups into an Array, sorting it according to the template
   // and the links, and converting it back into objects
   const sortedArray = Object.entries(linkGroups).sort()
-  linkGroups = sortedArray.reduce((previousLinkGroups, element) => {
-    return {
+  linkGroups = sortedArray.reduce((previousLinkGroups, element) => (
+    {
       ...previousLinkGroups,
       [element[0]]: [
         ...[...element[1].sort((a, b) => {
@@ -136,23 +135,18 @@ const tag = ({
         ]
       ]
     }
-  }, {})
+  ), {})
 
   resetHues()
 
   const children = Object.entries(linkGroups).map(([linkGroup, links = []], groupIndex) => (
-    // TODO: add styled LinkGroup component for formatting group spacing
     <ATag key={`group-${groupIndex}`}>
       <ATag>
-        {/* TODO: create function to change snakecase to word case */}
-        {/* TODO: add styled component for formatting Tag spacing */}
         {/* TODO: create a function to loop through a series of hues to ensure these are different */}
         <Tag isPill size="large" hue={hues.pop()}>{linkGroup.replace(/_/, ' ')}</Tag>
       </ATag>
       <ul>
         {links.map(({ path, title }, linkIndex) => (
-          // TODO: handle sorting of links by title (version or text compare), this one is already done above
-          // TODO: add styled component for formatting each Link/p spacing
           <AList key={`link-${groupIndex}-${linkIndex}`}>
             <Link to={`/${path}`}>
               {title}
