@@ -14,13 +14,13 @@ import TemplatedPage from '../components/molecules/TemplatedPage'
 
 const semver = require('semver')
 
-const ATag = styled.div`
+const LinkGroup = styled.div`
   text-transform: capitalize;
   margin-top: 2em;
   margin-bottom: 0.5em;
 `
 
-const AList = styled.p`
+const GroupItem = styled.li`
   padding: 5px;
   display: block;
 `
@@ -71,7 +71,7 @@ const tag = ({
 }) => {
   const { tag: activeTag } = pageContext || {}
   const edges = [...mdEdges, ...mdxEdges]
-  const hues = ['orange', 'green', 'purple', 'yellow', 'blue', 'black', 'red']
+  c
   let linkGroups = edges.reduce((previousLinkGroups, edge) => {
     const {
       node: {
@@ -113,16 +113,16 @@ const tag = ({
       }
   }, {})
 
-  const sortedArray = Object.entries(linkGroups).sort()
-  linkGroups = sortedArray.reduce((previousLinkGroups, element) => (
+  const sortedLinkGroups = Object.entries(linkGroups).sort()
+  linkGroups = sortedLinkGroups.reduce((previousLinkGroups, linkGroup) => (
     {
       ...previousLinkGroups,
-      [element[0]]: [
-        ...[...element[1].sort((a, b) => {
-          if (semver.valid(a.title) && semver.valid(b.title)) {
-            return compareVersion(a.title, b.title)
+      [linkGroup[0]]: [
+        ...[...linkGroup[1].sort((first, second) => {
+          if (semver.valid(first.title) && semver.valid(second.title)) {
+            return compareVersion(first.title, second.title)
           }
-          return compareString(a.title, b.title)
+          return compareString(second.title, first.title)
         })
         ]
       ]
@@ -130,20 +130,20 @@ const tag = ({
   ), {})
 
   const children = Object.entries(linkGroups).map(([linkGroup, links = []], groupIndex) => (
-    <ATag key={`group-${groupIndex}`}>
-      <ATag>
+    <LinkGroup key={`group-${groupIndex}`}>
+      <div>
         <Tag isPill size="large" hue={hues.pop()}>{linkGroup.replace(/_/, ' ')}</Tag>
-      </ATag>
+      </div>
       <ul>
         {links.map(({ path, title }, linkIndex) => (
-          <AList key={`link-${groupIndex}-${linkIndex}`}>
+          <GroupItem key={`link-${groupIndex}-${linkIndex}`}>
             <Link to={`/${path}`}>
               {title}
             </Link>
-          </AList>
+          </GroupItem>
         ))}
       </ul>
-    </ATag>
+    </LinkGroup>
   ))
 
   return (
