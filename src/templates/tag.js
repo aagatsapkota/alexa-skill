@@ -71,7 +71,7 @@ const tag = ({
 }) => {
   const { tag: activeTag } = pageContext || {}
   const edges = [...mdEdges, ...mdxEdges]
-  c
+  const hues = ['pink', 'orange', 'green', 'purple', 'yellow', 'blue', 'black', 'red']
   let linkGroups = edges.reduce((previousLinkGroups, edge) => {
     const {
       node: {
