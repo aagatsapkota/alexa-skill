@@ -4,11 +4,12 @@
     "price": "5",
     "agents": "2",
     "information": [
-      { "feature": "Order Details" },
       { "feature": "Order History" },
+      { "feature": "Order Details" },
       { "feature": "Customer Search" },
       { "feature": "Pin Order" },
-      { "feature": "Order Filter" }
+      { "feature": "Order Filter" },
+      { "feature": "Order Status" }
     ]
   },
   {
@@ -16,15 +17,16 @@
     "price": "19",
     "agents": "5",
     "information": [
-      { "feature": "Order Details" },
       { "feature": "Order History" },
+      { "feature": "Order Details" },
       { "feature": "Customer Search" },
       { "feature": "Pin Order" },
       { "feature": "Order Filter" },
-      { "feature": "Order Search" },
+      { "feature": "Order Status" },
       { "feature": "Shipping Status" },
       { "feature": "Payment Status" },
-      { "feature": "Order Status" }
+      { "feature": "Order Search" },
+      { "feature": "Order Notes" }
     ]
   },
   {
@@ -32,33 +34,40 @@
     "price": "24",
     "agents": "5",
     "information": [
-      { "feature": "Order Details" },
       { "feature": "Order History" },
+      { "feature": "Order Details" },
       { "feature": "Customer Search" },
       { "feature": "Pin Order" },
       { "feature": "Order Filter" },
-      { "feature": "Order Search" },
+      { "feature": "Order Status" },
       { "feature": "Shipping Status" },
       { "feature": "Payment Status" },
-      { "feature": "Order Status" },
+      { "feature": "Order Search" },
+      { "feature": "Order Notes" },
+      { "feature": "Order Timeline" },
+      { "feature": "Ticket Snippets" },
       { "feature": "Order Refund" },
       { "feature": "Item Refund*" }
     ]
   },
   {
     "plan": "Enterprise",
-    "price": "30",
+    "price": "34",
     "agents": "8",
     "information": [
-      { "feature": "Order Details" },
       { "feature": "Order History" },
+      { "feature": "Order Details" },
       { "feature": "Customer Search" },
       { "feature": "Pin Order" },
       { "feature": "Order Filter" },
-      { "feature": "Order Search" },
+      { "feature": "Order Status" },
       { "feature": "Shipping Status" },
       { "feature": "Payment Status" },
-      { "feature": "Order Status" },
+      { "feature": "Order Search" },
+      { "feature": "Order Notes" },
+      { "feature": "Order Timeline" },
+      { "feature": "Ticket Snippets" },
+      { "feature": "Ticket Macros" },
       { "feature": "Order Refund" },
       { "feature": "Item Refund*" },
       { "feature": "Partial Refund*" },

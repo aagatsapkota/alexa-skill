@@ -100,4 +100,3 @@ export const getPaths = (edges) => {
     }
   }, {})
 }
-

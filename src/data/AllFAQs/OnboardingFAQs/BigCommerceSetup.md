@@ -3,7 +3,7 @@ title: "Configuring BigCommerce"
 category: "Setup & Onboarding"
 priority: 1
 template: "faqs"
-tags: "bigCommerce"
+tags: "BigCommerce"
 ---
 
 <p>[BigCommerce](https://www.bigcommerce.com) is available as a Commerce Provider within the agnoStack plugin and supports using a built-in Shipping Provider, making use of the shipping configuration you've already set up in BigCommerce. It currently supports our Starter and Professional subscription tiers, with upcoming support soon to be released for our Enterprise tier.</p>

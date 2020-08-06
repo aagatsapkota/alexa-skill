@@ -10,6 +10,8 @@ import { Button } from '@zendeskgarden/react-buttons'
 import { Tag } from '@zendeskgarden/react-tags'
 import { Well } from '@zendeskgarden/react-notifications'
 
+import { capitalize } from '../../../js-utils'
+
 import * as atoms from '../../atoms'
 import LearnMore from '../LearnMore'
 import { useDimensions } from '../../../hooks'
@@ -43,22 +45,26 @@ const TemplatedPage = ({
   headline,
   tagline = ' ',
   format,
-  children,
   navigation,
+  children: sidebar,
 }) => {
   const [{ width }] = useDimensions(window)
   const {
     node: {
-      frontmatter: { title, date },
+      frontmatter: {
+        title,
+        date
+      } = {},
       body,
       html,
-    },
-  } = data
+      children,
+    } = {},
+  } = data || {}
 
   const { breakpoints } = theme || {}
   const { md: breakpointPx = '', numeric } = breakpoints || {}
   const breakpoint = numeric(breakpointPx)
-  const padBody = children && width > breakpoint
+  const padBody = sidebar && width > breakpoint
   const timestamp = moment(date, 'M/D/YYYY')
 
   return (
@@ -68,7 +74,7 @@ const TemplatedPage = ({
           <Row>
             <Col md={11}>
               <Heading tag="1">
-                <HeroTitle>{headline}</HeroTitle>
+                <HeroTitle>{capitalize(headline)}</HeroTitle>
                 <Tagline>{tagline}</Tagline>
               </Heading>
             </Col>
@@ -78,12 +84,12 @@ const TemplatedPage = ({
       <ContentSection format="light" data-padding-body={padBody}>
         <ContentGrid id="content_grid">
           <ContentRow>
-            {children && (
+            {sidebar && (
               <LeftCol md={12} lg={3}>
-                {children}
+                {sidebar}
               </LeftCol>
             )}
-            <BodyCol md={12} lg={children ? 8 : 11} data-padding-body={padBody}>
+            <BodyCol md={12} lg={sidebar ? 8 : 11} data-padding-body={padBody}>
               {date && (
                 <Heading tag="1">
                   {`${timestamp.format('dddd')}, ${timestamp.format('LL')}`}
@@ -94,19 +100,22 @@ const TemplatedPage = ({
                   {title}
                 </Heading>
               )}
-              {body ? (
-                <StyledMDX>
-                  <MDXProvider components={shortcodes}>
-                    <MDXRenderer
-                      {...{ process: { env: { GATSBY_URL_ZENDESK_LISTING } } }}
-                    >
-                      {body}
-                    </MDXRenderer>
-                  </MDXProvider>
-                </StyledMDX>
-              ) : (
-                <StyledMarkdown>{html}</StyledMarkdown>
-              )}
+              {children // eslint-disable-line no-nested-ternary
+                ? children // eslint-disable-line no-unneeded-ternary
+                : body
+                  ? (
+                    <StyledMDX>
+                      <MDXProvider components={shortcodes}>
+                        <MDXRenderer
+                          {...{ process: { env: { GATSBY_URL_ZENDESK_LISTING } } }}
+                        >
+                          {body}
+                        </MDXRenderer>
+                      </MDXProvider>
+                    </StyledMDX>
+                  ) : (
+                    <StyledMarkdown>{html}</StyledMarkdown>
+                  )}
               {navigation && <StyledNavigation>{navigation}</StyledNavigation>}
             </BodyCol>
           </ContentRow>
