@@ -1,8 +1,8 @@
 import React from 'react'
-import { graphql, Link } from 'gatsby'
+import styled, { withTheme } from 'styled-components'
+import { graphql, navigate, Link } from 'gatsby'
 import { Tag } from '@zendeskgarden/react-tags'
 
-import styled from 'styled-components'
 import { dashcase,
   ensureString,
   compareString,
@@ -16,13 +16,29 @@ const semver = require('semver')
 
 const LinkGroup = styled.div`
   text-transform: capitalize;
-  margin-top: 2em;
-  margin-bottom: 0.5em;
+  margin-bottom: 2em;
+`
+
+const TemplateTag = styled(Tag).attrs(({ template }) => ({
+  onClick: () => navigate(`/${dashcase(template)}`),
+  isPill: true,
+  size: 'large'
+}))`
+  &:hover {
+    cursor: pointer;
+  }
 `
 
 const GroupItem = styled.li`
-  padding: 5px;
-  display: block;
+  margin: .5em;
+`
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 `
 
 export const mdQuery = graphql`
@@ -30,7 +46,6 @@ export const mdQuery = graphql`
     allMarkdownRemark {
       edges {
         node {
-          id
           frontmatter {
             title
             tags
@@ -43,7 +58,6 @@ export const mdQuery = graphql`
     allMdx {
       edges {
         node {
-          id
           frontmatter {
             title
             tags
@@ -51,7 +65,6 @@ export const mdQuery = graphql`
             category
             version
           }
-          body
         }
       }
     }
@@ -59,6 +72,7 @@ export const mdQuery = graphql`
 `
 
 const tag = ({
+  theme,
   pageContext,
   data: {
     allMarkdownRemark: {
@@ -69,10 +83,12 @@ const tag = ({
     },
   }
 }) => {
+  const { palette } = theme || {}
   const { tag: activeTag } = pageContext || {}
   const edges = [...mdEdges, ...mdxEdges]
-  const hues = ['cyan', 'magenta', 'crimson', 'pink', 'orange', 'green', 'purple', 'yellow', 'blue', 'black', 'red']
-  let linkGroups = edges.reduce((previousLinkGroups, edge) => {
+  const hues = Object.keys(palette).filter((hue) => !['black', 'white'].includes(hue))
+
+  const linkGroups = edges.reduce((previousLinkGroups, edge) => {
     const {
       node: {
         frontmatter: {
@@ -86,7 +102,7 @@ const tag = ({
       }
     } = edge
     const {
-      [template]: previousTemplateLinks = []
+      [template]: previousLinks = []
     } = previousLinkGroups
 
     const splitTags = ensureString(tags).split(', ')
@@ -104,7 +120,7 @@ const tag = ({
       : {
         ...previousLinkGroups,
         [template]: [
-          ...previousTemplateLinks,
+          ...previousLinks,
           {
             path: linkPath,
             title: title || version
@@ -113,33 +129,34 @@ const tag = ({
       }
   }, {})
 
-  const sortedLinkGroups = Object.entries(linkGroups).sort()
-  linkGroups = sortedLinkGroups.reduce((previousLinkGroups, linkGroup) => (
-    {
-      ...previousLinkGroups,
-      [linkGroup[0]]: [
-        ...[...linkGroup[1].sort((first, second) => {
-          if (semver.valid(first.title) && semver.valid(second.title)) {
-            return compareVersion(first.title, second.title)
-          }
-          return compareString(second.title, first.title)
-        })
-        ]
-      ]
-    }
-  ), {})
+  const linkGroupEntries = Object.entries(linkGroups)
+    .sort()
+    .map(([template, links]) => ([
+      template,
+      links.sort(({ title: title1 }, { title: title2 }) => {
+        let comparison = 0
+        if (semver.valid(title1) && semver.valid(title2)) {
+          comparison = compareVersion(title1, title2)
+        } else {
+          comparison = compareString(title2, title1)
+        }
+        return comparison
+      })
+    ]))
 
-  const children = Object.entries(linkGroups).map(([linkGroup, links = []], groupIndex) => (
+  const children = linkGroupEntries.map(([template, links = []], groupIndex) => (
     <LinkGroup key={`group-${groupIndex}`}>
       <div>
-        <Tag isPill size="large" hue={hues.pop()}>{linkGroup.replace(/_/, ' ')}</Tag>
+        <TemplateTag template={template} hue={hues[groupIndex % hues.length]}>
+          {template.replace(/_/, ' ')}
+        </TemplateTag>
       </div>
       <ul>
         {links.map(({ path, title }, linkIndex) => (
           <GroupItem key={`link-${groupIndex}-${linkIndex}`}>
-            <Link to={`/${path}`}>
+            <StyledLink to={`/${path}`}>
               {title}
-            </Link>
+            </StyledLink>
           </GroupItem>
         ))}
       </ul>
@@ -166,4 +183,4 @@ const tag = ({
   )
 }
 
-export default tag
+export default withTheme(tag)
